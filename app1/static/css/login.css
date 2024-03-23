@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #ececec;
+}
+
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px
+}
+
+.btn{
+    background-color: gainsboro;
+}
+
+.btn:hover{
+    background-color: #316ec9;
+
+}
+
+
+@media only screen and (max-width: 768px){
+
+}

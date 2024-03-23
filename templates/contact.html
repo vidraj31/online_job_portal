@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .menu-bar{
+        background-image: linear-gradient(to right,#5c2f8f 20%,#bb9b33);
+        
+    }
+    </style>
+</head>
+<body>
+    <div class="menu-bar">
+    <nav class="navbar navbar-expand-lg p-3">
+        <a class="navbar-brand text-light" href="#">Job Portal</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon "></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto mr-4">
+                <li class="nav-item mr-2">
+                    <a class="nav-link  text-light" href="http://127.0.0.1:8000/">Home</a>
+                </li>
+                <li class="nav-item mr-2">
+                    <a class="nav-link  text-light" href="/signup/">Sign Up</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Login
+                    </a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/jobskrlogin/">Job Seeker</a></li>
+                        <li><a class="dropdown-item" href="/emprlogin/">Employer</a></li>
+                      </ul>
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
+    </div>
+<br>
+<br>
+
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <h4><li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li></h4>
+    {% endfor %}
+  </ul>
+{% endif %}
+<br>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 bg-light">
+               <h3 class="text-center text-light" style="  background-image: linear-gradient(to right,#5c2f8f 20%,#bb9b33);">Contact Us</h3>
+               <form action="/contact/" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Enter Your Name" class="form-control" required/> </div>
+                    <div class="form-group mt-2">
+                    <input type="email" name="email" placeholder="Enter Your Email" class="form-control" required/></div>
+                    <div class="form-group mt-2">
+                        <input type="tel" name="phone" placeholder="Enter Your Mobile Number" class="form-control" required/></div>
+                    <div class="form-group mt-2">
+                      <label>How Can I Help You?</label>
+                   <textarea name="desc" cols="10" class="form-control" rows="5"></textarea>
+               
+                </div>
+                <div class="d-grid gap-2 mt-4">
+                    <button class="btn text-light" type="submit" style="width: 100%;   background-image: linear-gradient(to right,#5c2f8f 20%,#bb9b33);" >Submit</button>
+                </div>
+               </form>
+             </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+</body>
+</html>

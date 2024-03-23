@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Job Portal</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/login.css'%}">
+</head>
+<style>
+    .menu-bar{
+        background-image: linear-gradient(to right,#5c2f8f 20%,#bb9b33);
+        
+    }
+</style>
+<body>
+ <!--header-->
+ <div class="menu-bar">
+ <nav class="navbar navbar-expand-lg p-3">
+    <a class="navbar-brand text-light" href="#">Job Portal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon "></span>
+</button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto mr-4">
+            <li class="nav-item mr-2">
+                <a class="nav-link  text-light" href="http://127.0.0.1:8000/">Home</a>
+            </li>
+            <li class="nav-item mr-2">
+                <a class="nav-link  text-light" href="/signup/">Sign Up</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="login" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Login
+                </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/jobskrlogin/">Job Seeker</a></li>
+                    <li><a class="dropdown-item" href="/emprlogin/">Employer</a></li>
+                  </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+</div>
+<!--body-->
+
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center min-vh-100">
+            <div class="col-md-4 mx-auto">
+                <div class="card">
+                  <div class="card-body">
+                    {% for message in messages %}
+                    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                        <strong></strong>{{message}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}  
+                    <form  method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="Username">Email id</label>
+                            <input type="email" name="uname" id="Username" placeholder="Enter your email"
+                            class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="Password">Password</label>
+                            <input type="password" name="pass1" id="Password" placeholder="Enter your Password"
+                            class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-block">
+                                <i class="fa fa-unlock-alt mr-2"></i>
+                                Login
+                            </button>
+                        </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="pt-3 text-centre">
+                    <small class="">
+                        Don't have an account?
+                        <a href="/jobskrsignup/">Signup now</a>
+                    </small>
+                </div> 
+            </div>
+        </div>
+    </div> 
+
+    
+        
+    
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>   
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>add job</title>
+    <style>
+      .menu-bar{
+        background-image: linear-gradient(to right,#5c2f8f 20%,#bb9b33);
+        
+    }
+    </style>
+</head>
+<body>
+  <!--header-->
+  <div class="menu-bar">
+  <nav class="navbar navbar-expand-lg p-3 row shadow-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light" href="#">Job Portal</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link  text-light" href="/emprhome/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="/addjob/addjob/">Add Job</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  text-light" href="/joblist/joblist/">Job List</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  text-light" href="/apcandidate/">Candidate Applied</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="/logout/">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  </div>
+<!--body-->
+  <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 m-5">
+          <form class="row shadow-lg p-3" method="POST">
+            {%csrf_token%}
+            <div class="m-2">
+              <h1 class="">Add Jobs</h1>
+            </div>
+              <!--JOb Title -->
+              <div class="col-md-12 m-2">
+                <label for="job-title" class="form-label">Job Title<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" name="jobtitle" placeholder="Enter Job Title" id="job-title" required/>
+              </div>
+              <!--Start date and End date -->
+              <div class="col-md-12 m-2">
+                <div class="row">
+                  <!--Start Date -->
+                  <div class="col">
+                    <label for="start-dat" class="form-label">Start Date<span class="text-danger">*</span></label>
+                    <input type="date" class="form-control" name="startdate" id="start-date" required/>
+                  </div>
+                   <!--ENd Date -->
+                   <div class="col">
+                    <label for="end-date" class="form-label">End Date<span class="text-danger">*</span></label>
+                    <input type="date" class="form-control" name="enddate"  id="end-date" required/>
+                   </div>
+                </div>
+              </div>
+               <!--Salary and Location -->
+               <div class="col-md-12 m-2">
+                <div class="row">
+                  <!--Salary -->
+                  <div class="col">
+                    <label for="salary" class="form-label">Salary(Per Month)<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="salary" placeholder="Salary" id="salary" required/>
+                  </div>
+                   <!--Location -->
+                   <div class="col">
+                    <label for="location" class="form-label">Location<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="location" placeholder="Location" id="location" required/>
+                   </div>
+                </div>
+              </div>
+              <div class="col-md-12 m-2 mt-2">
+                <label for="workmode" class="form-label">Work Mode</label>
+                <select name="workmode">
+                    <option value="onsite">Onsite</option>
+                    <option value="workfromhome">Work from home</option>
+                    <option value="hybrid">Hybrid</option>
+                </select>
+        
+            </div>
+              <!--Experience-->
+              <div class="col-md-12 m-2">
+                <label for="experience" class="form-label">Experience(in Year)<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" name="experiance" placeholder="Experience" id="experience" required/>
+              </div>
+              <!--Skills-->
+              <div class="col-md-12 m-2">
+                <label for="skills" class="form-label">Skills<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" name="skills" placeholder="Skills Required" id="skills" required/>
+              </div>
+               <!-- textarea -->
+               <div class="col-md-12 m-2">
+                <label for="description" class="form-label">Description<span class="text-danger">*</span></label>
+                <textarea class="form-control" name="description" required></textarea>
+               </div>
+
+                <!-- submit button -->
+              <div class="col-md-12 m-2">
+                <input type="submit" class="btn text-light btn-primary" >
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if error == "no" %}
+  <script>
+      alert("Job detail has been added");
+      window.location= '/joblist/joblist/';
+  </script>
+  {% endif %}
+  
+  {% if error == "yes" %}
+  <script>
+      alert("Something went wrong,Try Again....");
+  </script>
+  {% endif %}
+      
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>    
+</body>
+</html>

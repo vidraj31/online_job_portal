@@ -1,0 +1,59 @@
+<!-- latest_jobs.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Jobs</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body{
+            background-color: gainsboro;
+        }
+        .custom-card {
+            border: 1px solid #ccc;
+            border-radius: 10px; /* Adjust the border radius as needed */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjust the shadow as needed */
+        }
+
+        /* Adjust the card size */
+        .custom-card .card-body {
+            padding: 1.25rem; /* Adjust padding as needed */
+            background-color: #f8f9fa; /* Add background color inside the card body */
+            border-radius: 8px;
+        }
+    </style>
+
+    
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1>Latest Jobs</h1>
+        <div class="row">
+            {% for i in job %}
+                <div class="col-md-6 ">
+                    <div class="card mb-3 custom-card">
+                        <div class="card-body  d-flex justify-content-between align-items-center">
+                            <div>
+                            <h5 class="card-title">{{ i.title}}</h5>
+                            <p class="card-text mb-0">{{ i.skills}}</p>
+                            <p class="card-text">{{ i.location}}</p>
+                            </div>
+                            <!-- Add other job details here -->
+                            <a href="#" class="btn btn-success btn-sm">login and applaynow</a>     
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Add Bootstrap JS and Popper.js scripts (required for Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

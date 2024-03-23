@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <style>
+        tr{text-align:center}
+        .menu-bar{
+        background-image: linear-gradient(to right,#5c2f8f 20%,#bb9b33);
+        
+    }
+    </style>
+</head>
+<body>
+  <div class="menu-bar">  
+    <nav class="navbar navbar-expand-lg p-3 ">
+        <div class="container-fluid">
+          <a class="navbar-brand text-light" href="#">Job Portal</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link  text-light" href="/jobskrhome/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="/ujlist/">Job List</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="/logout/">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+  </div>
+      <hr>
+
+      <div class="container shadow-lg">
+        <div class="row">
+            <div class="col-md-6 mt-3 ">
+             
+
+                <h4>Firstname</h4>
+                <p><i class="bi bi-buildings"></i> {{data.user.first_name}}</p>
+
+                <h4>Lastname</h4>
+                <p><i class="bi bi-card-text"></i> {{data.user.last_name}}</p>
+
+                
+                <h4>Gender</h4>
+                <p><i class="bi bi-buildings"></i> {{data.gender}}</p>
+
+                <h4>Email</h4>
+                <p><i class="bi bi-envelope"></i> {{data.user.username}}</p>
+
+                <h4>Contact</h4>
+                <p><i class="bi bi-phone"></i>{{data.mobile}}</p>
+        </div>
+      <br>
+
+      <div class="container shadow-lg py-2 mb-2">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                <label class="font-weight-bold">Upload Resume</label>
+                <input type="file" class="form-control" name="resume">
+            </div>
+            <input type="submit" value="Submit" class="btn btn-primary mt-3">
+            <a href="/resume/" class="btn btn-primary mt-3">Generate Resume</a>
+        </form>
+      </div>
+
+
+
+
+
+
+      {% if error == "close" %}
+      <script>
+          alert("Application line are close,last date is over");
+          window.location= '/ujlist/';
+      </script>
+      {% endif %}
+      
+      {% if error == "notopen" %}
+      <script>
+          alert("Application line is not open");
+          window.location= '/ujlist/';
+      </script>
+      {% endif %}
+
+      {% if error == "done" %}
+      <script>
+          alert("Job Application submitted successfully");
+          window.location= '/ujlist/';
+      </script>
+      {% endif %}
+      
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>    
+ </body>
+ </html>
